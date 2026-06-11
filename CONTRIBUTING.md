@@ -41,6 +41,8 @@ A useful issue includes:
 
 This guide is specifically written for **B.C. families** and focuses on the B.C. and Canadian legal and support landscape. Suggestions that are relevant only to other jurisdictions are outside scope, though feedback that improves clarity for all readers is always welcome.
 
+If you want to create a guide for another region in Canada, and host it here, open an issue and lets have a discussion!
+
 ---
 
 ## License

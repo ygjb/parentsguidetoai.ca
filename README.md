@@ -38,7 +38,7 @@ The web version supports light and dark themes (follows your OS preference with 
 
 ## Running locally
 
-Open `index.html` directly in any modern browser — no build step, server, or dependencies to install. All assets (Bootstrap 5, Bootstrap Icons, Figtree font) load from CDNs.
+Open `index.html` directly in any modern browser — no build step, server, or dependencies to install. Bootstrap 5 and Bootstrap Icons load from cdnjs.cloudflare.com with Subresource Integrity (SRI) verification. The Figtree heading font falls back to the system font stack if not installed locally; Google Fonts is not used.
 
 ---
 

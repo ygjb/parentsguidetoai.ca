@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -15,14 +15,15 @@
   </script>
 
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <!-- Friendly heading font (easy to remove if you prefer system fonts) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 — subresource integrity (SRI) verified -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Bootstrap Icons — subresource integrity (SRI) verified -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Fonts: Figtree loads from the system stack if available; Google Fonts removed for privacy -->
 
   <!--
     ===========================================================================
@@ -45,10 +46,11 @@
       --brand-ink: #1d2b2c;
       --brand-soft: #f3f1ea;
       --brand-soft-2: #e9efe8;
+      --eyebrow-color: #7a5230; /* darkened for WCAG AA contrast on light backgrounds */
 
       /* Traffic-light colours */
       --tl-green: #2e7d32;
-      --tl-yellow: #b88600;
+      --tl-yellow: #8a6600; /* darkened from #b88600 for WCAG AA contrast */
       --tl-red: #c0392b;
 
       --bs-body-color: var(--brand-ink);
@@ -66,6 +68,7 @@
       --brand-ink: #e6eaea;
       --brand-soft: #1a2526;
       --brand-soft-2: #16201f;
+      --eyebrow-color: var(--brand-accent); /* brand-accent is bright enough on dark backgrounds */
 
       --tl-green: #6cc070;
       --tl-yellow: #e0b342;
@@ -88,7 +91,7 @@
       letter-spacing: .12em;
       font-size: .78rem;
       font-weight: 600;
-      color: var(--brand-accent);
+      color: var(--eyebrow-color);
     }
 
     /* Hero */
@@ -113,6 +116,7 @@
       font-weight: 600;
       background: transparent;
     }
+    [data-bs-theme="dark"] .toc-nav .nav-link { color: #b8c4c5; }
 
     /* Cards */
     .card { border: 1px solid var(--bs-border-color); }
@@ -132,6 +136,7 @@
       font-weight: 600;
     }
     .help-card a { font-weight: 600; }
+    [data-bs-theme="dark"] .help-card .card-header { color: #1d2b2c; }
 
     /* Glossary */
     #glossary-search { max-width: 28rem; }
@@ -186,25 +191,27 @@
   </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#tocNav" data-bs-smooth-scroll="true" tabindex="0">
+<body data-bs-spy="scroll" data-bs-target="#tocNav" data-bs-smooth-scroll="true">
+
+  <a class="visually-hidden-focusable" href="#mainContent">Skip to main content</a>
 
   <!-- ===================== TOP NAVBAR ===================== -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top" aria-label="Site navigation">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#top">
-        <i class="bi bi-robot text-primary"></i>
+        <i class="bi bi-robot text-primary" aria-hidden="true"></i>
         <span>Parent's Guide to AI</span>
       </a>
       <div class="d-flex align-items-center gap-2">
         <a href="parents-guide-to-ai.pdf" download class="btn btn-outline-secondary btn-sm pdf-link d-none d-sm-inline-flex align-items-center">
-          <i class="bi bi-file-earmark-arrow-down me-1"></i> PDF
+          <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i> Download
         </a>
         <button id="themeToggle" type="button" class="btn btn-outline-secondary btn-sm theme-toggle" aria-label="Toggle dark mode">
-          <i class="bi bi-moon-stars theme-icon-dark"></i>
-          <i class="bi bi-sun theme-icon-light"></i>
+          <i class="bi bi-moon-stars theme-icon-dark" aria-hidden="true"></i>
+          <i class="bi bi-sun theme-icon-light" aria-hidden="true"></i>
         </button>
         <a href="#help" class="btn btn-danger btn-sm fw-semibold">
-          <i class="bi bi-life-preserver me-1"></i> Get help now
+          <i class="bi bi-life-preserver me-1" aria-hidden="true"></i> Get help now
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-label="Open contents">
           <span class="navbar-toggler-icon"></span>
@@ -227,20 +234,20 @@
           </p>
           <div class="d-flex flex-wrap gap-2">
             <a href="#intro" class="btn btn-primary btn-lg px-4">
-              <i class="bi bi-book me-1"></i> Start reading
+              <i class="bi bi-book me-1" aria-hidden="true"></i> Start reading
             </a>
             <a href="#help" class="btn btn-outline-danger btn-lg px-4">
-              <i class="bi bi-life-preserver me-1"></i> Something's wrong — get help
+              <i class="bi bi-life-preserver me-1" aria-hidden="true"></i> Something's wrong — get help
             </a>
             <a href="parents-guide-to-ai.pdf" download class="btn btn-outline-secondary btn-lg px-4 pdf-link">
-              <i class="bi bi-file-earmark-arrow-down me-1"></i> Download PDF
+              <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i> Download PDF
             </a>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="card shadow-sm">
             <div class="card-body p-4">
-              <h2 class="h5 mb-3"><i class="bi bi-compass me-2"></i>What's inside</h2>
+              <h2 class="h5 mb-3"><i class="bi bi-compass me-2" aria-hidden="true"></i>What's inside</h2>
               <div class="row row-cols-1 row-cols-sm-2 g-2 small">
                 <div class="col"><a href="#what-is-ai" class="text-decoration-none">What AI actually is</a></div>
                 <div class="col"><a href="#copilot" class="text-decoration-none">VSB's Copilot 13+</a></div>
@@ -266,7 +273,7 @@
       <div class="col-lg-3 toc-col d-none d-lg-block">
         <div class="position-sticky" style="top: 90px;">
           <p class="eyebrow mb-2">Contents</p>
-          <nav id="tocNav" class="nav flex-column toc-nav border-start-0">
+          <nav id="tocNav" class="nav flex-column toc-nav border-start-0" aria-label="Page contents">
             <a class="nav-link" href="#intro">Introduction</a>
             <a class="nav-link" href="#copilot">Understanding Copilot 13+</a>
             <a class="nav-link" href="#what-is-ai">What is AI?</a>
@@ -289,7 +296,7 @@
       </div>
 
       <!-- MAIN CONTENT -->
-      <main class="col-lg-9">
+      <main id="mainContent" class="col-lg-9">
 
         <!-- 1. Introduction -->
         <section id="intro" class="mb-5">
@@ -306,7 +313,7 @@
             know where to find help. Like the internet, AI can be very useful — but used carelessly
             it can spread misinformation, invade privacy, and create new forms of harm.</p>
           <div class="alert alert-light border d-flex gap-3" role="note">
-            <i class="bi bi-people-fill fs-4 text-primary"></i>
+            <i class="bi bi-people-fill fs-4 text-primary" aria-hidden="true"></i>
             <div>Keeping children safe with AI is a shared responsibility between schools, families,
               technology companies, and communities.</div>
           </div>
@@ -324,15 +331,15 @@
           <p>According to the VSB, the educational version of Copilot includes protections that many
             public AI tools don't. These may include:</p>
           <div class="row row-cols-1 row-cols-md-2 g-3 my-1">
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>School-managed accounts created and controlled by the district</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Commercial data protection</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Prompts and conversations not used to train public AI models</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Encrypted data handling</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Content filtering to reduce exposure to harmful material</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Integration with existing digital-citizenship expectations</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary" aria-hidden="true"></i><span>School-managed accounts created and controlled by the district</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary" aria-hidden="true"></i><span>Commercial data protection</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary" aria-hidden="true"></i><span>Prompts and conversations not used to train public AI models</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary" aria-hidden="true"></i><span>Encrypted data handling</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary" aria-hidden="true"></i><span>Content filtering to reduce exposure to harmful material</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary" aria-hidden="true"></i><span>Integration with existing digital-citizenship expectations</span></div></div>
           </div>
           <div class="alert alert-warning d-flex gap-3 mt-3" role="note">
-            <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+            <i class="bi bi-exclamation-triangle-fill fs-4" aria-hidden="true"></i>
             <div><strong>School-approved AI does not mean every AI tool online offers the same protections.</strong>
               School AI tools are often managed learning environments, while public AI tools operate
               under their own commercial terms and privacy policies. Review your district's AI guidance
@@ -361,7 +368,7 @@
           </p>
           <div class="card bg-light border-0 my-3">
             <div class="card-body">
-              <h3 class="h5"><i class="bi bi-lightbulb me-2"></i>A simple way to think about it</h3>
+              <h3 class="h5"><i class="bi bi-lightbulb me-2" aria-hidden="true"></i>A simple way to think about it</h3>
               <p class="mb-0">AI doesn't think or understand the world the way people do. One way to
                 picture it is like the autocomplete on your phone: it looks at many examples and predicts
                 what's likely to come next — combined with software that turns those predictions into
@@ -407,7 +414,7 @@
             <div class="col-md-6">
               <div class="card h-100">
                 <div class="card-body">
-                  <h3 class="h5"><i class="bi bi-building me-2"></i>At school</h3>
+                  <h3 class="h5"><i class="bi bi-building me-2" aria-hidden="true"></i>At school</h3>
                   <p>Many districts choose platforms with added privacy protections and supervision:</p>
                   <ul class="mb-0">
                     <li>Organizational accounts</li>
@@ -423,7 +430,7 @@
             <div class="col-md-6">
               <div class="card h-100">
                 <div class="card-body">
-                  <h3 class="h5"><i class="bi bi-house me-2"></i>At home</h3>
+                  <h3 class="h5"><i class="bi bi-house me-2" aria-hidden="true"></i>At home</h3>
                   <p>Students often use AI without realizing it. Assume AI is already present in:</p>
                   <ul class="mb-0">
                     <li>Phones and tablets, search engines</li>
@@ -438,7 +445,7 @@
             </div>
           </div>
           <div class="alert alert-light border d-flex gap-3 mt-3" role="note">
-            <i class="bi bi-quote fs-3 text-primary"></i>
+            <i class="bi bi-quote fs-3 text-primary" aria-hidden="true"></i>
             <div><strong>School-approved does not automatically mean home-approved.</strong> Every family
               should decide what level of AI use is appropriate based on age, maturity, and circumstances.</div>
           </div>
@@ -451,28 +458,28 @@
           <p>Used appropriately, AI can support a broad range of learning outcomes.</p>
           <div class="row row-cols-1 row-cols-md-2 g-3">
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h3 class="h5"><i class="bi bi-mortarboard me-2"></i>Learning support</h3>
+              <h3 class="h5"><i class="bi bi-mortarboard me-2" aria-hidden="true"></i>Learning support</h3>
               <p class="mb-0 small text-secondary">Explaining difficult concepts, summarizing complex
                 reading, creating practice quizzes, and generating study guides.</p>
             </div></div></div>
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h3 class="h5"><i class="bi bi-pencil-square me-2"></i>Writing assistance</h3>
+              <h3 class="h5"><i class="bi bi-pencil-square me-2" aria-hidden="true"></i>Writing assistance</h3>
               <p class="mb-0 small text-secondary">Brainstorming ideas, improving grammar, suggesting
                 clearer wording, and organizing outlines.</p>
             </div></div></div>
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h3 class="h5"><i class="bi bi-palette me-2"></i>Creative projects</h3>
+              <h3 class="h5"><i class="bi bi-palette me-2" aria-hidden="true"></i>Creative projects</h3>
               <p class="mb-0 small text-secondary">Story prompts, art inspiration, coding assistance,
                 and language translation.</p>
             </div></div></div>
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h3 class="h5"><i class="bi bi-universal-access me-2"></i>Accessibility</h3>
+              <h3 class="h5"><i class="bi bi-universal-access me-2" aria-hidden="true"></i>Accessibility</h3>
               <p class="mb-0 small text-secondary">Help with reading, writing, language barriers, and
                 executive-function skills like planning, organization, and time management.</p>
             </div></div></div>
           </div>
           <div class="alert alert-success d-flex gap-3 mt-3" role="note">
-            <i class="bi bi-check-circle-fill fs-4"></i>
+            <i class="bi bi-check-circle-fill fs-4" aria-hidden="true"></i>
             <div>AI should help students learn, not do the learning for them. Encourage children to
               think of AI as a <strong>learning assistant</strong>, not an answer machine.</div>
           </div>
@@ -489,8 +496,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk1">
-                  <i class="bi bi-lock me-2"></i> Privacy
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk1" aria-expanded="false" aria-controls="risk1">
+                  <i class="bi bi-lock me-2" aria-hidden="true"></i> Privacy
                 </button>
               </h3>
               <div id="risk1" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -506,8 +513,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk2">
-                  <i class="bi bi-question-circle me-2"></i> Misinformation
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk2" aria-expanded="false" aria-controls="risk2">
+                  <i class="bi bi-question-circle me-2" aria-hidden="true"></i> Misinformation
                 </button>
               </h3>
               <div id="risk2" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -522,8 +529,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk3">
-                  <i class="bi bi-bar-chart-steps me-2"></i> Bias and fairness
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk3" aria-expanded="false" aria-controls="risk3">
+                  <i class="bi bi-bar-chart-steps me-2" aria-hidden="true"></i> Bias and fairness
                 </button>
               </h3>
               <div id="risk3" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -543,8 +550,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk4">
-                  <i class="bi bi-c-circle me-2"></i> Copyright and ownership
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk4" aria-expanded="false" aria-controls="risk4">
+                  <i class="bi bi-c-circle me-2" aria-hidden="true"></i> Copyright and ownership
                 </button>
               </h3>
               <div id="risk4" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -560,8 +567,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk5">
-                  <i class="bi bi-camera-reels me-2"></i> Deepfakes
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk5" aria-expanded="false" aria-controls="risk5">
+                  <i class="bi bi-camera-reels me-2" aria-hidden="true"></i> Deepfakes
                 </button>
               </h3>
               <div id="risk5" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -577,8 +584,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk6">
-                  <i class="bi bi-shield-exclamation me-2"></i> Non-consensual intimate images
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk6" aria-expanded="false" aria-controls="risk6">
+                  <i class="bi bi-shield-exclamation me-2" aria-hidden="true"></i> Non-consensual intimate images
                 </button>
               </h3>
               <div id="risk6" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -601,8 +608,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk7">
-                  <i class="bi bi-exclamation-octagon me-2"></i> Sextortion
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk7" aria-expanded="false" aria-controls="risk7">
+                  <i class="bi bi-exclamation-octagon me-2" aria-hidden="true"></i> Sextortion
                 </button>
               </h3>
               <div id="risk7" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -623,8 +630,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk8">
-                  <i class="bi bi-chat-heart me-2"></i> AI companions &amp; emotional dependency
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk8" aria-expanded="false" aria-controls="risk8">
+                  <i class="bi bi-chat-heart me-2" aria-hidden="true"></i> AI companions &amp; emotional dependency
                 </button>
               </h3>
               <div id="risk8" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -641,8 +648,8 @@
 
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk9">
-                  <i class="bi bi-droplet me-2"></i> Environmental impact
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk9" aria-expanded="false" aria-controls="risk9">
+                  <i class="bi bi-droplet me-2" aria-hidden="true"></i> Environmental impact
                 </button>
               </h3>
               <div id="risk9" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
@@ -672,7 +679,7 @@
             <li>Ask questions when something feels wrong.</li>
           </ul>
           <div class="alert alert-light border d-flex gap-3" role="note">
-            <i class="bi bi-chat-quote fs-4 text-primary"></i>
+            <i class="bi bi-chat-quote fs-4 text-primary" aria-hidden="true"></i>
             <div>A useful question for parents to ask: <strong>"Could you explain this work without using
               the AI?"</strong></div>
           </div>
@@ -684,14 +691,14 @@
           <h2 class="h1 mb-3">A Family AI Agreement</h2>
           <p>Consider discussing these expectations together:</p>
           <div class="row row-cols-1 row-cols-md-2 g-2">
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>AI may be used for studying and brainstorming.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>AI shouldn't complete assignments students don't understand.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Private information should never be shared.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>AI should never be used to bully or impersonate others.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Fake images of real people should never be created or shared.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Ask permission before uploading photos of friends or family.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Be honest about when AI helped with school work.</span></div></div>
-            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Parents and children should feel comfortable discussing AI openly.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>AI may be used for studying and brainstorming.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>AI shouldn't complete assignments students don't understand.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>Private information should never be shared.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>AI should never be used to bully or impersonate others.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>Fake images of real people should never be created or shared.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>Ask permission before uploading photos of friends or family.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>Be honest about when AI helped with school work.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success" aria-hidden="true"></i><span>Parents and children should feel comfortable discussing AI openly.</span></div></div>
           </div>
         </section>
 
@@ -721,7 +728,7 @@
           <p>A quick way to talk about what's okay, what needs care, and what to avoid.</p>
           <div class="row row-cols-1 row-cols-md-3 g-3">
             <div class="col"><div class="card tl-card tl-green h-100"><div class="card-body">
-              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-green)"></span> Green — generally appropriate</h3>
+              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-green)" aria-hidden="true"></span> Green — generally appropriate</h3>
               <ul class="small mb-0">
                 <li>Practice quizzes</li>
                 <li>Brainstorming</li>
@@ -732,7 +739,7 @@
               </ul>
             </div></div></div>
             <div class="col"><div class="card tl-card tl-yellow h-100"><div class="card-body">
-              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-yellow)"></span> Yellow — use carefully</h3>
+              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-yellow)" aria-hidden="true"></span> Yellow — use carefully</h3>
               <ul class="small mb-0">
                 <li>Research summaries</li>
                 <li>Essay outlines</li>
@@ -742,7 +749,7 @@
               </ul>
             </div></div></div>
             <div class="col"><div class="card tl-card tl-red h-100"><div class="card-body">
-              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-red)"></span> Red — avoid</h3>
+              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-red)" aria-hidden="true"></span> Red — avoid</h3>
               <ul class="small mb-0">
                 <li>Submitting AI work as your own</li>
                 <li>Sharing private information</li>
@@ -761,7 +768,7 @@
           <h2 class="h1 mb-3">If Something Goes Wrong — Who to Contact</h2>
 
           <div class="alert alert-danger d-flex gap-3" role="alert">
-            <i class="bi bi-life-preserver fs-3"></i>
+            <i class="bi bi-life-preserver fs-3" aria-hidden="true"></i>
             <div>
               <strong>Act calmly and quickly.</strong> Your child is not in trouble for being targeted,
               and reporting is the fastest path to making it stop. Survivors of intimate-image abuse in
@@ -772,17 +779,17 @@
           <h3 class="h4 mt-4">First steps</h3>
           <div class="row row-cols-1 row-cols-md-3 g-3 mb-4">
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h4 class="h6"><i class="bi bi-emoji-smile me-1 text-primary"></i> Stay calm</h4>
+              <h4 class="h6"><i class="bi bi-emoji-smile me-1 text-primary" aria-hidden="true"></i> Stay calm</h4>
               <p class="small mb-0">Children are far more likely to seek help if they know they'll be
                 supported, not blamed.</p>
             </div></div></div>
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h4 class="h6"><i class="bi bi-camera me-1 text-primary"></i> Preserve evidence</h4>
+              <h4 class="h6"><i class="bi bi-camera me-1 text-primary" aria-hidden="true"></i> Preserve evidence</h4>
               <p class="small mb-0">Take screenshots of messages, profiles, and images if it's safe to do
                 so — this helps with removal and reporting.</p>
             </div></div></div>
             <div class="col"><div class="card h-100"><div class="card-body">
-              <h4 class="h6"><i class="bi bi-x-octagon me-1 text-primary"></i> Stop further sharing</h4>
+              <h4 class="h6"><i class="bi bi-x-octagon me-1 text-primary" aria-hidden="true"></i> Stop further sharing</h4>
               <p class="small mb-0">Don't forward or redistribute harmful material, even to report it
                 informally.</p>
             </div></div></div>
@@ -791,7 +798,7 @@
           <h3 class="h4">Who to contact (B.C. &amp; Canada)</h3>
 
           <div class="card help-card mb-3">
-            <div class="card-header"><i class="bi bi-image me-2"></i>A fake or shared intimate image of a young person</div>
+            <h4 class="card-header"><i class="bi bi-image me-2" aria-hidden="true"></i>A fake or shared intimate image of a young person</h4>
             <div class="card-body">
               <p class="mb-2"><a href="https://takebackyourimages.gov.bc.ca" target="_blank" rel="noopener">Take Back Your Images (B.C.)</a> —
                 B.C.'s dedicated portal for getting intimate images (including AI-generated or "deepfake"
@@ -808,7 +815,7 @@
           </div>
 
           <div class="card help-card mb-3">
-            <div class="card-header"><i class="bi bi-mortarboard me-2"></i>Something that happened at or involves school</div>
+            <h4 class="card-header"><i class="bi bi-mortarboard me-2" aria-hidden="true"></i>Something that happened at or involves school</h4>
             <div class="card-body">
               <p class="mb-2"><a href="https://erasereportit.gov.bc.ca/" target="_blank" rel="noopener">erase — Report It</a> —
                 B.C.'s confidential reporting tool that sends a private message to your school or district's
@@ -819,7 +826,7 @@
           </div>
 
           <div class="card help-card mb-3">
-            <div class="card-header"><i class="bi bi-telephone me-2"></i>Emotional support — any time, day or night</div>
+            <h4 class="card-header"><i class="bi bi-telephone me-2" aria-hidden="true"></i>Emotional support — any time, day or night</h4>
             <div class="card-body">
               <p class="mb-0"><strong>Kids Help Phone</strong> — call
                 <a href="tel:18006686868">1-800-668-6868</a>, or text <strong>CONNECT</strong> to
@@ -828,7 +835,7 @@
           </div>
 
           <div class="card help-card">
-            <div class="card-header"><i class="bi bi-shield-exclamation me-2"></i>Threats, extortion, or child exploitation</div>
+            <h4 class="card-header"><i class="bi bi-shield-exclamation me-2" aria-hidden="true"></i>Threats, extortion, or child exploitation</h4>
             <div class="card-body">
               <p class="mb-0">Contact your local police — call <a href="tel:911">911</a> in an emergency, or
                 the non-emergency line otherwise — in addition to
@@ -845,12 +852,12 @@
             before it, AI presents both opportunities and challenges. Parents don't need to become
             technical experts. The most important things you can do are:</p>
           <div class="row row-cols-2 row-cols-md-3 g-2 mb-3">
-            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-search me-1"></i>Stay curious</span></div>
-            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-people me-1"></i>Learn alongside them</span></div>
-            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-lightbulb me-1"></i>Encourage critical thinking</span></div>
-            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-lock me-1"></i>Protect privacy</span></div>
-            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-chat-dots me-1"></i>Talk openly</span></div>
-            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-life-preserver me-1"></i>Ask for help</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-search me-1" aria-hidden="true"></i>Stay curious</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-people me-1" aria-hidden="true"></i>Learn alongside them</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-lightbulb me-1" aria-hidden="true"></i>Encourage critical thinking</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-lock me-1" aria-hidden="true"></i>Protect privacy</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-chat-dots me-1" aria-hidden="true"></i>Talk openly</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-life-preserver me-1" aria-hidden="true"></i>Ask for help</span></div>
           </div>
           <p class="fw-semibold mb-0">The goal is not to raise children who avoid AI. The goal is to raise
             children who can use AI thoughtfully, ethically, and safely.</p>
@@ -862,7 +869,7 @@
           <h2 class="h1 mb-3">Frequently Asked Questions</h2>
           <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Is AI cheating?</button></h3>
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">Is AI cheating?</button></h3>
               <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
                 Not necessarily. Using AI to brainstorm or study may be acceptable; submitting AI-generated
                 work as original work may violate school expectations. When in doubt, your child should ask
@@ -870,7 +877,7 @@
               </div></div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Should I let my child use ChatGPT or other AI tools?</button></h3>
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">Should I let my child use ChatGPT or other AI tools?</button></h3>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
                 This depends on age, maturity, and family expectations. Many parents choose supervised use
                 combined with discussions about privacy and critical thinking. Note that many public AI tools
@@ -878,14 +885,14 @@
               </div></div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Can AI create fake pictures of my child?</button></h3>
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">Can AI create fake pictures of my child?</button></h3>
               <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
                 Yes. Modern AI systems can generate convincing fake images based on photographs or simple
                 text prompts.
               </div></div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">What should I do if someone creates a fake image of my child?</button></h3>
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">What should I do if someone creates a fake image of my child?</button></h3>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
                 <ul class="mb-2">
                   <li>Stay calm and reassure your child it's not their fault.</li>
@@ -900,14 +907,14 @@
               </div></div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Can my family opt out of school-provided AI?</button></h3>
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Can my family opt out of school-provided AI?</button></h3>
               <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
                 Policies vary and are still developing. If you'd prefer your child not use a school-provided
                 AI tool, contact your child's school or district directly to ask what options are available.
               </div></div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Can AI replace teachers?</button></h3>
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">Can AI replace teachers?</button></h3>
               <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
                 No. AI can support learning, but teachers provide judgment, mentorship, emotional support,
                 social development, and human connection.
@@ -923,7 +930,7 @@
           <div class="row g-3">
             <div class="col-md-6">
               <div class="card h-100 border-success"><div class="card-body">
-                <h3 class="h5 text-success"><i class="bi bi-check2-all me-2"></i>Good everyday uses</h3>
+                <h3 class="h5 text-success"><i class="bi bi-check2-all me-2" aria-hidden="true"></i>Good everyday uses</h3>
                 <ul class="mb-0">
                   <li>Brainstorming</li><li>Practice quizzes</li><li>Study help</li>
                   <li>Translation</li><li>Learning explanations</li>
@@ -932,7 +939,7 @@
             </div>
             <div class="col-md-6">
               <div class="card h-100 border-warning"><div class="card-body">
-                <h3 class="h5" style="color:var(--tl-yellow)"><i class="bi bi-exclamation-triangle me-2"></i>Warning signs</h3>
+                <h3 class="h5" style="color:var(--tl-yellow)"><i class="bi bi-exclamation-triangle me-2" aria-hidden="true"></i>Warning signs</h3>
                 <ul class="mb-0">
                   <li>Secretive AI use</li><li>Sharing personal information</li>
                   <li>AI replacing friendships</li><li>Deepfake bullying</li>
@@ -942,7 +949,7 @@
             </div>
             <div class="col-12">
               <div class="card border-danger"><div class="card-body">
-                <h3 class="h5 text-danger"><i class="bi bi-life-preserver me-2"></i>If something goes wrong</h3>
+                <h3 class="h5 text-danger"><i class="bi bi-life-preserver me-2" aria-hidden="true"></i>If something goes wrong</h3>
                 <ol class="mb-0">
                   <li><strong>Stay calm and supportive.</strong></li>
                   <li><strong>Save evidence</strong> (screenshots) and stop further sharing.</li>
@@ -1005,14 +1012,34 @@
           <p class="eyebrow mb-1">Appendix E</p>
           <h2 class="h1 mb-3">AI &amp; Digital Literacy Glossary</h2>
           <p>Plain-language definitions of words used throughout this guide. Start typing to filter.</p>
+          <label for="glossaryFilter" class="visually-hidden">Search glossary terms</label>
           <div class="input-group mb-3" id="glossary-search">
-            <span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input type="text" class="form-control" id="glossaryFilter" placeholder="Search terms…" aria-label="Search glossary terms">
+            <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" id="glossaryFilter" placeholder="Search terms…">
           </div>
           <dl id="glossaryList" class="row">
             <!-- terms injected as .glossary-term blocks -->
           </dl>
-          <p id="glossaryEmpty" class="text-secondary d-none">No terms match that search.</p>
+          <p id="glossaryEmpty" role="status" aria-live="polite" class="text-secondary d-none"></p>
+        </section>
+
+        <!-- Feedback -->
+        <section id="feedback" class="mb-5">
+          <div class="card bg-light border-0">
+            <div class="card-body d-flex gap-3 align-items-start">
+              <i class="bi bi-github fs-3 text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
+              <div>
+                <h3 class="h5 mb-1">Found an error or want to suggest something?</h3>
+                <p class="mb-2 small text-secondary">This guide is maintained on GitHub. If you find a broken link, outdated information, or have a suggestion, please open an issue — it only takes a moment and helps keep this resource accurate for everyone.</p>
+                <a href="https://github.com/ygjb/parentsguidetoai.ca/issues/new" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="bi bi-chat-text me-1" aria-hidden="true"></i>Open an issue on GitHub
+                </a>
+                <a href="https://github.com/ygjb/parentsguidetoai.ca" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm ms-2">
+                  <i class="bi bi-github me-1" aria-hidden="true"></i>View the repository
+                </a>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Disclaimer -->
@@ -1037,10 +1064,12 @@
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <span>A Parent's Guide to Artificial Intelligence · Version 1.2 · Reviewed June 2026</span>
         <span class="d-flex flex-wrap align-items-center gap-3">
-          <a href="parents-guide-to-ai.pdf" download class="pdf-link"><i class="bi bi-file-earmark-arrow-down me-1"></i>Download PDF</a>
-          <span>Questions or broken links? <a href="mailto:yvanboily@gmail.com">yvanboily@gmail.com</a></span>
+          <a href="parents-guide-to-ai.pdf" download class="pdf-link"><i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>Download PDF</a>
+          <a href="https://github.com/ygjb/parentsguidetoai.ca" target="_blank" rel="noopener"><i class="bi bi-github me-1" aria-hidden="true"></i>GitHub</a>
+          <a href="https://github.com/ygjb/parentsguidetoai.ca/issues/new" target="_blank" rel="noopener"><i class="bi bi-chat-text me-1" aria-hidden="true"></i>Questions or feedback? Open an issue</a>
         </span>
       </div>
+      <p class="mt-2 mb-0 opacity-75">This static site does not use analytics, forms, cookies, or tracking. Your browser loads styles and icons from <a href="https://cdnjs.cloudflare.com" target="_blank" rel="noopener">cdnjs.cloudflare.com</a>.</p>
       <hr class="my-3 border-secondary">
       <div class="d-flex align-items-start gap-2">
         <i class="bi bi-cc-circle-fill fs-5 mt-1" aria-hidden="true"></i>
@@ -1058,7 +1087,7 @@
   <!-- Back to top -->
   <a href="#top" id="backToTop" class="btn btn-primary rounded-circle position-fixed shadow"
      style="bottom: 1.25rem; right: 1.25rem; width: 3rem; height: 3rem; display:none;"
-     aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+     aria-label="Back to top"><i class="bi bi-arrow-up" aria-hidden="true"></i></a>
 
   <!-- ===================== OFFCANVAS TOC (mobile) ===================== -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
@@ -1067,7 +1096,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <nav class="nav flex-column">
+      <nav class="nav flex-column" aria-label="Page contents">
         <a class="nav-link" data-bs-dismiss="offcanvas" href="#intro">Introduction</a>
         <a class="nav-link" data-bs-dismiss="offcanvas" href="#copilot">Understanding Copilot 13+</a>
         <a class="nav-link" data-bs-dismiss="offcanvas" href="#what-is-ai">What is AI?</a>
@@ -1089,8 +1118,10 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS — subresource integrity (SRI) verified -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+          integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
     // ---- Dark mode toggle ----
@@ -1196,15 +1227,25 @@
     // Filter
     const filter = document.getElementById('glossaryFilter');
     const empty = document.getElementById('glossaryEmpty');
+    const allTerms = document.querySelectorAll('.glossary-term');
     filter.addEventListener('input', () => {
       const q = filter.value.trim().toLowerCase();
       let shown = 0;
-      document.querySelectorAll('.glossary-term').forEach(el => {
+      allTerms.forEach(el => {
         const match = el.dataset.term.includes(q) || el.textContent.toLowerCase().includes(q);
         el.classList.toggle('d-none', !match);
         if (match) shown++;
       });
-      empty.classList.toggle('d-none', shown !== 0);
+      if (q === '') {
+        empty.textContent = '';
+        empty.classList.add('d-none');
+      } else if (shown === 0) {
+        empty.textContent = 'No terms match that search.';
+        empty.classList.remove('d-none');
+      } else {
+        empty.textContent = `Showing ${shown} of ${allTerms.length} terms.`;
+        empty.classList.remove('d-none');
+      }
     });
 
     // Back-to-top visibility
