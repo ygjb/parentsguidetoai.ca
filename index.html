@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Parent's Guide to AI — B.C. Schools and at Home</title>
+  <meta name="description" content="A plain-language guide to help parents and caregivers understand AI in B.C. schools, set sensible rules at home, and know exactly who to contact if something goes wrong.">
+
+  <!-- Set initial theme from system preference before paint (no storage used) -->
+  <script>
+    (function () {
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-bs-theme', prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Friendly heading font (easy to remove if you prefer system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!--
+    ===========================================================================
+    THEMING NOTES
+    ---------------------------------------------------------------------------
+    This page is built on stock Bootstrap 5 so you can restyle it easily.
+    The block below only sets a handful of CSS variables and a few light
+    component tweaks. To apply your own look, either:
+      (a) override the :root variables below, or
+      (b) link your own stylesheet AFTER the Bootstrap <link> tags above.
+    All structural styling comes from Bootstrap utility classes in the markup.
+    ===========================================================================
+  -->
+  <style>
+    :root {
+      /* Brand palette — override these to retheme the whole page */
+      --bs-primary: #2f5d62;
+      --bs-primary-rgb: 47, 93, 98;
+      --brand-accent: #c6803b;
+      --brand-ink: #1d2b2c;
+      --brand-soft: #f3f1ea;
+      --brand-soft-2: #e9efe8;
+
+      /* Traffic-light colours */
+      --tl-green: #2e7d32;
+      --tl-yellow: #b88600;
+      --tl-red: #c0392b;
+
+      --bs-body-color: var(--brand-ink);
+      --bs-body-font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --bs-link-color: var(--bs-primary);
+      --bs-link-hover-color: var(--brand-accent);
+    }
+
+    /* Dark theme — Bootstrap toggles this via data-bs-theme="dark" on <html>.
+       Override the same brand variables so the custom bits track the theme. */
+    [data-bs-theme="dark"] {
+      --bs-primary: #6fb3ba;
+      --bs-primary-rgb: 111, 179, 186;
+      --brand-accent: #e0a567;
+      --brand-ink: #e6eaea;
+      --brand-soft: #1a2526;
+      --brand-soft-2: #16201f;
+
+      --tl-green: #6cc070;
+      --tl-yellow: #e0b342;
+      --tl-red: #e8776b;
+
+      --bs-body-color: var(--brand-ink);
+      --bs-link-color: var(--bs-primary);
+      --bs-link-hover-color: var(--brand-accent);
+    }
+
+    body { scroll-behavior: smooth; }
+
+    h1, h2, h3, h4, .display-4 { font-weight: 700; letter-spacing: -0.01em; }
+
+    /* Section anchors clear the sticky navbar */
+    section[id] { scroll-margin-top: 90px; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--brand-accent);
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0) 0%, var(--brand-soft) 100%),
+        radial-gradient(120% 140% at 0% 0%, var(--brand-soft-2) 0%, rgba(233,239,232,0) 55%);
+    }
+
+    /* Sticky sidebar navigation (scrollspy) */
+    .toc-nav .nav-link {
+      color: #5a6566;
+      border-left: 2px solid transparent;
+      border-radius: 0;
+      padding: .3rem .75rem;
+      font-size: .92rem;
+    }
+    .toc-nav .nav-link:hover { color: var(--bs-primary); }
+    .toc-nav .nav-link.active {
+      color: var(--bs-primary);
+      border-left-color: var(--bs-primary);
+      font-weight: 600;
+      background: transparent;
+    }
+
+    /* Cards */
+    .card { border: 1px solid var(--bs-border-color); }
+    .card .bi { color: var(--bs-primary); }
+
+    /* Traffic light cards */
+    .tl-card { border-top: 5px solid; }
+    .tl-green  { border-top-color: var(--tl-green); }
+    .tl-yellow { border-top-color: var(--tl-yellow); }
+    .tl-red    { border-top-color: var(--tl-red); }
+    .tl-dot { width: .85rem; height: .85rem; border-radius: 50%; display: inline-block; }
+
+    /* Help section emphasis */
+    .help-card .card-header {
+      background: var(--bs-primary);
+      color: #fff;
+      font-weight: 600;
+    }
+    .help-card a { font-weight: 600; }
+
+    /* Glossary */
+    #glossary-search { max-width: 28rem; }
+    .glossary-term { scroll-margin-top: 90px; }
+    .glossary-term dt { font-weight: 600; color: var(--bs-primary); }
+
+    .footer-note { background: #16201f; color: #cdd5d4; }
+    .footer-note a { color: #fff; }
+
+    /* Theme toggle icon: show the right glyph per theme */
+    [data-bs-theme="light"] .theme-icon-dark { display: inline-block; }
+    [data-bs-theme="light"] .theme-icon-light { display: none; }
+    [data-bs-theme="dark"] .theme-icon-dark { display: none; }
+    [data-bs-theme="dark"] .theme-icon-light { display: inline-block; }
+
+    /* ===================== PRINT STYLESHEET ===================== */
+    @media print {
+      /* Always print in light theme regardless of on-screen setting */
+      :root, [data-bs-theme="dark"] {
+        --bs-body-color: #000;
+        --bs-primary: #1d2b2c;
+        --brand-accent: #555;
+      }
+      body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+
+      /* Hide interactive chrome that has no meaning on paper */
+      .navbar, .toc-col, #backToTop, #tocOffcanvas,
+      #glossary-search, .hero .btn, .theme-toggle, .pdf-link { display: none !important; }
+
+      /* Reclaim full width once the sidebar is gone */
+      main.col-lg-9 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+      .container { width: 100% !important; max-width: 100% !important; }
+
+      .hero { background: none !important; padding-top: 0 !important; }
+      a { color: #000 !important; text-decoration: none !important; }
+
+      /* Expand every accordion so all content prints */
+      .accordion-collapse { display: block !important; height: auto !important; visibility: visible !important; }
+      .accordion-button { background: none !important; color: #000 !important; box-shadow: none !important; }
+      .accordion-button::after { display: none !important; }
+
+      /* Print the URL after external links so paper readers can follow them */
+      main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; word-break: break-all; }
+      main a[href^="tel"]::after, main a[href^="mailto"]::after,
+      main a[href^="#"]::after { content: ""; }
+
+      /* Avoid awkward breaks */
+      section, .card, .accordion-item { break-inside: avoid; }
+      h1, h2, h3 { break-after: avoid; }
+      .footer-note { background: none !important; color: #000 !important; border-top: 1px solid #999; }
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#tocNav" data-bs-smooth-scroll="true" tabindex="0">
+
+  <!-- ===================== TOP NAVBAR ===================== -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#top">
+        <i class="bi bi-robot text-primary"></i>
+        <span>Parent's Guide to AI</span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <a href="parents-guide-to-ai.pdf" download class="btn btn-outline-secondary btn-sm pdf-link d-none d-sm-inline-flex align-items-center">
+          <i class="bi bi-file-earmark-arrow-down me-1"></i> PDF
+        </a>
+        <button id="themeToggle" type="button" class="btn btn-outline-secondary btn-sm theme-toggle" aria-label="Toggle dark mode">
+          <i class="bi bi-moon-stars theme-icon-dark"></i>
+          <i class="bi bi-sun theme-icon-light"></i>
+        </button>
+        <a href="#help" class="btn btn-danger btn-sm fw-semibold">
+          <i class="bi bi-life-preserver me-1"></i> Get help now
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-label="Open contents">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header id="top" class="hero py-5">
+    <div class="container py-lg-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <p class="eyebrow mb-2">B.C. Schools &amp; at Home · Version 1.2</p>
+          <h1 class="display-4 mb-3">A Parent's Guide to Artificial Intelligence</h1>
+          <p class="lead text-secondary mb-4">
+            A plain-language resource to help you understand the AI tools your child meets at
+            school and at home — what they're good for, where the risks are, and exactly who to
+            call if something goes wrong. No technical background needed.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#intro" class="btn btn-primary btn-lg px-4">
+              <i class="bi bi-book me-1"></i> Start reading
+            </a>
+            <a href="#help" class="btn btn-outline-danger btn-lg px-4">
+              <i class="bi bi-life-preserver me-1"></i> Something's wrong — get help
+            </a>
+            <a href="parents-guide-to-ai.pdf" download class="btn btn-outline-secondary btn-lg px-4 pdf-link">
+              <i class="bi bi-file-earmark-arrow-down me-1"></i> Download PDF
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <h2 class="h5 mb-3"><i class="bi bi-compass me-2"></i>What's inside</h2>
+              <div class="row row-cols-1 row-cols-sm-2 g-2 small">
+                <div class="col"><a href="#what-is-ai" class="text-decoration-none">What AI actually is</a></div>
+                <div class="col"><a href="#copilot" class="text-decoration-none">VSB's Copilot 13+</a></div>
+                <div class="col"><a href="#opportunities" class="text-decoration-none">How it can help</a></div>
+                <div class="col"><a href="#risks" class="text-decoration-none">The risks to know</a></div>
+                <div class="col"><a href="#traffic-light" class="text-decoration-none">The AI traffic light</a></div>
+                <div class="col"><a href="#agreement" class="text-decoration-none">A family agreement</a></div>
+                <div class="col"><a href="#help" class="text-decoration-none">If something goes wrong</a></div>
+                <div class="col"><a href="#glossary" class="text-decoration-none">Plain-language glossary</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== MAIN LAYOUT ===================== -->
+  <div class="container my-5">
+    <div class="row g-5">
+
+      <!-- TABLE OF CONTENTS (sticky on large screens) -->
+      <div class="col-lg-3 toc-col d-none d-lg-block">
+        <div class="position-sticky" style="top: 90px;">
+          <p class="eyebrow mb-2">Contents</p>
+          <nav id="tocNav" class="nav flex-column toc-nav border-start-0">
+            <a class="nav-link" href="#intro">Introduction</a>
+            <a class="nav-link" href="#copilot">Understanding Copilot 13+</a>
+            <a class="nav-link" href="#what-is-ai">What is AI?</a>
+            <a class="nav-link" href="#why-schools">Why schools introduce AI</a>
+            <a class="nav-link" href="#school-vs-home">School AI vs. home AI</a>
+            <a class="nav-link" href="#opportunities">Opportunities</a>
+            <a class="nav-link" href="#risks">Risks &amp; challenges</a>
+            <a class="nav-link" href="#responsible">Using AI responsibly</a>
+            <a class="nav-link" href="#agreement">A family AI agreement</a>
+            <a class="nav-link" href="#starters">Conversation starters</a>
+            <a class="nav-link" href="#traffic-light">The AI traffic light</a>
+            <a class="nav-link" href="#help">If something goes wrong</a>
+            <a class="nav-link" href="#final">Final thoughts</a>
+            <a class="nav-link" href="#faq">FAQ</a>
+            <a class="nav-link" href="#checklist">Quick checklist</a>
+            <a class="nav-link" href="#resources">Resources</a>
+            <a class="nav-link" href="#glossary">Glossary</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <main class="col-lg-9">
+
+        <!-- 1. Introduction -->
+        <section id="intro" class="mb-5">
+          <p class="eyebrow mb-1">Section 1</p>
+          <h2 class="h1 mb-3">Introduction</h2>
+          <p>AI is rapidly becoming part of everyday life. It's already built into search engines,
+            social media, smartphones, online games, writing tools, photo editors, translation apps,
+            and educational software.</p>
+          <p>Many students meet AI through school-supported tools, such as the Vancouver School
+            Board's rollout of Microsoft Copilot 13+ for eligible secondary students. At the same
+            time, they may use public AI services at home through websites and apps.</p>
+          <p>This guide isn't here to tell families whether AI is "good" or "bad." It's here to help
+            you understand the technology, support your child's learning, recognize the risks, and
+            know where to find help. Like the internet, AI can be very useful — but used carelessly
+            it can spread misinformation, invade privacy, and create new forms of harm.</p>
+          <div class="alert alert-light border d-flex gap-3" role="note">
+            <i class="bi bi-people-fill fs-4 text-primary"></i>
+            <div>Keeping children safe with AI is a shared responsibility between schools, families,
+              technology companies, and communities.</div>
+          </div>
+        </section>
+
+        <!-- 2. Copilot 13+ -->
+        <section id="copilot" class="mb-5">
+          <p class="eyebrow mb-1">Section 2</p>
+          <h2 class="h1 mb-3">Understanding VSB's Copilot 13+</h2>
+          <p>In May 2026, the Vancouver School Board announced the introduction of
+            <strong>Microsoft Copilot 13+</strong> for eligible secondary students. The goal isn't to
+            replace teachers or independent thinking — it's to recognize that AI tools are becoming
+            part of higher education and the workplace, and that students benefit from learning to use
+            them responsibly.</p>
+          <p>According to the VSB, the educational version of Copilot includes protections that many
+            public AI tools don't. These may include:</p>
+          <div class="row row-cols-1 row-cols-md-2 g-3 my-1">
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>School-managed accounts created and controlled by the district</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Commercial data protection</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Prompts and conversations not used to train public AI models</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Encrypted data handling</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Content filtering to reduce exposure to harmful material</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-shield-check text-primary"></i><span>Integration with existing digital-citizenship expectations</span></div></div>
+          </div>
+          <div class="alert alert-warning d-flex gap-3 mt-3" role="note">
+            <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+            <div><strong>School-approved AI does not mean every AI tool online offers the same protections.</strong>
+              School AI tools are often managed learning environments, while public AI tools operate
+              under their own commercial terms and privacy policies. Review your district's AI guidance
+              and acceptable-use policies, and discuss them with your child.</div>
+          </div>
+        </section>
+
+        <!-- 3. What is AI -->
+        <section id="what-is-ai" class="mb-5">
+          <p class="eyebrow mb-1">Section 3</p>
+          <h2 class="h1 mb-3">What is Artificial Intelligence?</h2>
+          <p>AI refers to computer systems that perform tasks that traditionally required human
+            intelligence. <em>Generative</em> AI can create text, images, video, audio, computer code,
+            study materials, summaries, and music.</p>
+          <p class="mb-2">Tools your child may encounter include:</p>
+          <p>
+            <span class="badge text-bg-light border me-1 mb-1">ChatGPT</span>
+            <span class="badge text-bg-light border me-1 mb-1">Microsoft Copilot</span>
+            <span class="badge text-bg-light border me-1 mb-1">Google Gemini</span>
+            <span class="badge text-bg-light border me-1 mb-1">Claude</span>
+            <span class="badge text-bg-light border me-1 mb-1">Perplexity</span>
+            <span class="badge text-bg-light border me-1 mb-1">AI in search engines</span>
+            <span class="badge text-bg-light border me-1 mb-1">AI image generators</span>
+            <span class="badge text-bg-light border me-1 mb-1">AI study apps</span>
+            <span class="badge text-bg-light border me-1 mb-1">AI writing assistants</span>
+          </p>
+          <div class="card bg-light border-0 my-3">
+            <div class="card-body">
+              <h3 class="h5"><i class="bi bi-lightbulb me-2"></i>A simple way to think about it</h3>
+              <p class="mb-0">AI doesn't think or understand the world the way people do. One way to
+                picture it is like the autocomplete on your phone: it looks at many examples and predicts
+                what's likely to come next — combined with software that turns those predictions into
+                useful results. That makes AI extremely useful, but it can also be <strong>confidently
+                wrong</strong>. Spotting those mistakes is a key part of AI literacy.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Why schools -->
+        <section id="why-schools" class="mb-5">
+          <p class="eyebrow mb-1">Section 4</p>
+          <h2 class="h1 mb-3">Why Are Schools Introducing AI?</h2>
+          <p>Rather than pretending students will never use these tools, many educators believe
+            students should learn to use them safely and responsibly. Digital literacy increasingly
+            includes understanding AI's capabilities and limitations, evaluating AI-generated
+            information, protecting privacy, understanding bias, respecting intellectual property,
+            maintaining academic integrity, and being a responsible digital citizen.</p>
+          <p class="fw-semibold">The goal is not to replace learning with AI — it's to teach students to
+            use AI while continuing to think critically and independently.</p>
+
+          <div class="card border-start border-4 border-primary bg-light mt-3">
+            <div class="card-body">
+              <h3 class="h5">A note on the ongoing debate</h3>
+              <p>The introduction of AI in schools isn't universally welcomed, and reasonable people
+                disagree. When the VSB announced Copilot 13+, some students and parents raised concerns,
+                including privacy, the impact on independent thinking, environmental cost (water and
+                electricity), student safety, and broader social and economic impacts. There was also a
+                request for clearer policies and an opt-out option.</p>
+              <p class="mb-0">If you have concerns, you're not alone, and you're entitled to raise them.
+                Families who wish to limit or opt out of school-provided AI should contact their child's
+                school or district to ask what options are available. Different families may reach
+                different conclusions — and that's okay.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. School vs home -->
+        <section id="school-vs-home" class="mb-5">
+          <p class="eyebrow mb-1">Section 5</p>
+          <h2 class="h1 mb-3">School AI vs. AI at Home</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="h5"><i class="bi bi-building me-2"></i>At school</h3>
+                  <p>Many districts choose platforms with added privacy protections and supervision:</p>
+                  <ul class="mb-0">
+                    <li>Organizational accounts</li>
+                    <li>Data protection measures</li>
+                    <li>Restricted age access</li>
+                    <li>Content filtering</li>
+                    <li>Teacher supervision</li>
+                    <li>Acceptable-use policies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="h5"><i class="bi bi-house me-2"></i>At home</h3>
+                  <p>Students often use AI without realizing it. Assume AI is already present in:</p>
+                  <ul class="mb-0">
+                    <li>Phones and tablets, search engines</li>
+                    <li>Snapchat and Instagram features</li>
+                    <li>TikTok recommendation systems</li>
+                    <li>Homework-helper apps, Discord bots</li>
+                    <li>Photo &amp; video editing apps</li>
+                    <li>Translation tools, browser extensions</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-light border d-flex gap-3 mt-3" role="note">
+            <i class="bi bi-quote fs-3 text-primary"></i>
+            <div><strong>School-approved does not automatically mean home-approved.</strong> Every family
+              should decide what level of AI use is appropriate based on age, maturity, and circumstances.</div>
+          </div>
+        </section>
+
+        <!-- 6. Opportunities -->
+        <section id="opportunities" class="mb-5">
+          <p class="eyebrow mb-1">Section 6</p>
+          <h2 class="h1 mb-3">The Opportunities of AI</h2>
+          <p>Used appropriately, AI can support a broad range of learning outcomes.</p>
+          <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h3 class="h5"><i class="bi bi-mortarboard me-2"></i>Learning support</h3>
+              <p class="mb-0 small text-secondary">Explaining difficult concepts, summarizing complex
+                reading, creating practice quizzes, and generating study guides.</p>
+            </div></div></div>
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h3 class="h5"><i class="bi bi-pencil-square me-2"></i>Writing assistance</h3>
+              <p class="mb-0 small text-secondary">Brainstorming ideas, improving grammar, suggesting
+                clearer wording, and organizing outlines.</p>
+            </div></div></div>
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h3 class="h5"><i class="bi bi-palette me-2"></i>Creative projects</h3>
+              <p class="mb-0 small text-secondary">Story prompts, art inspiration, coding assistance,
+                and language translation.</p>
+            </div></div></div>
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h3 class="h5"><i class="bi bi-universal-access me-2"></i>Accessibility</h3>
+              <p class="mb-0 small text-secondary">Help with reading, writing, language barriers, and
+                executive-function skills like planning, organization, and time management.</p>
+            </div></div></div>
+          </div>
+          <div class="alert alert-success d-flex gap-3 mt-3" role="note">
+            <i class="bi bi-check-circle-fill fs-4"></i>
+            <div>AI should help students learn, not do the learning for them. Encourage children to
+              think of AI as a <strong>learning assistant</strong>, not an answer machine.</div>
+          </div>
+        </section>
+
+        <!-- 7. Risks -->
+        <section id="risks" class="mb-5">
+          <p class="eyebrow mb-1">Section 7</p>
+          <h2 class="h1 mb-3">The Risks and Challenges</h2>
+          <p>These are the topics worth understanding before your child uses AI on their own. Tap any
+            heading to read more.</p>
+
+          <div class="accordion" id="risksAccordion">
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk1">
+                  <i class="bi bi-lock me-2"></i> Privacy
+                </button>
+              </h3>
+              <div id="risk1" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>Many AI systems collect what users provide. Children should avoid entering passwords,
+                    home addresses, financial or health information, student ID numbers, personal details
+                    about classmates, family information, or private photographs.</p>
+                  <p class="fw-semibold mb-0">A useful rule: never put anything into an AI tool that you
+                    wouldn't want copied, stored, or shared.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk2">
+                  <i class="bi bi-question-circle me-2"></i> Misinformation
+                </button>
+              </h3>
+              <div id="risk2" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>AI can generate convincing but incorrect information. Encourage your child to ask:
+                    Where did this come from? Can I verify it? Does another source agree? Could this be
+                    fabricated?</p>
+                  <p class="mb-0">Critical thinking remains essential.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk3">
+                  <i class="bi bi-bar-chart-steps me-2"></i> Bias and fairness
+                </button>
+              </h3>
+              <div id="risk3" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>AI learns from enormous collections of text and images created by people, and can
+                    absorb and repeat the biases in that data — favouring or stereotyping certain groups,
+                    presenting a narrow view as if it were neutral, or leaving out underrepresented
+                    perspectives.</p>
+                  <p>An AI answer isn't neutral just because a computer produced it. The "average" answer
+                    may reflect whose voices were most common online — not what's fair, accurate, or
+                    complete.</p>
+                  <p class="mb-0">Children can ask: Whose perspective might be missing? Could this be unfair
+                    to certain groups? Would another source give a different viewpoint?</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk4">
+                  <i class="bi bi-c-circle me-2"></i> Copyright and ownership
+                </button>
+              </h3>
+              <div id="risk4" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>AI-generated content may draw on existing works. Intellectual property broadly covers
+                    creative work protected by law — copyright (music, movies, art), trademarks (brands and
+                    names), and patents (rights over industrial or technical processes).</p>
+                  <p class="fw-semibold mb-0">A good family guideline: use AI to help create your own work —
+                    not to copy someone else's.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk5">
+                  <i class="bi bi-camera-reels me-2"></i> Deepfakes
+                </button>
+              </h3>
+              <div id="risk5" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>Deepfakes are fake pictures, videos, or audio created using AI that appear authentic
+                    but are entirely fabricated. They can be used for harassment, bullying, political
+                    misinformation, identity theft, financial scams, and sexual exploitation.</p>
+                  <p class="mb-0 fw-semibold">Children should understand that realistic media is not
+                    necessarily real.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk6">
+                  <i class="bi bi-shield-exclamation me-2"></i> Non-consensual intimate images
+                </button>
+              </h3>
+              <div id="risk6" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>Intimate images are private sexual images — which can include nudity, but also any
+                    provocative imagery. AI can generate or manipulate images that appear to show real
+                    people in intimate situations without their consent. This is a serious, growing concern
+                    across Canada, and it can happen to anyone.</p>
+                  <ul>
+                    <li>Creating fake intimate images of others causes real harm.</li>
+                    <li>Sharing such images can carry serious legal and school consequences.</li>
+                    <li>Being targeted is <strong>never</strong> the victim's fault.</li>
+                  </ul>
+                  <p class="mb-0">If this happens to your child, there are fast, free, B.C.-specific ways to
+                    get images removed and to get support — see
+                    <a href="#help">If something goes wrong</a>.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk7">
+                  <i class="bi bi-exclamation-octagon me-2"></i> Sextortion
+                </button>
+              </h3>
+              <div id="risk7" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>Sextortion means threatening someone to make them send money or more private images.
+                    Predators may use AI-generated images, fake identities, or manipulated photos to threaten
+                    or extort young people. Warning signs include requests for private images, sudden demands
+                    for money, threats to expose embarrassing content, and online relationships that quickly
+                    become controlling.</p>
+                  <p class="fw-semibold">If someone threatens you online, you can always ask for help — and
+                    you will not be in trouble for asking.</p>
+                  <p class="mb-0">Sextortion can move very quickly and feel overwhelming. Reassure your child
+                    that telling a trusted adult is the right move, no matter what's been said or threatened.
+                    See <a href="#help">If something goes wrong</a>.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk8">
+                  <i class="bi bi-chat-heart me-2"></i> AI companions &amp; emotional dependency
+                </button>
+              </h3>
+              <div id="risk8" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p>Some AI systems are designed to simulate friendship or emotional support. Be aware if
+                    your child begins replacing real friendships with AI conversations, seeking constant
+                    reassurance from chatbots, spending excessive time with AI companions, avoiding
+                    real-world interactions, or feeling they need the AI to feel okay.</p>
+                  <p class="mb-0">AI can be a useful tool, but it shouldn't become a substitute for healthy
+                    human relationships.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#risk9">
+                  <i class="bi bi-droplet me-2"></i> Environmental impact
+                </button>
+              </h3>
+              <div id="risk9" class="accordion-collapse collapse" data-bs-parent="#risksAccordion">
+                <div class="accordion-body">
+                  <p class="mb-0">Running large AI systems takes significant computing power, which uses
+                    electricity and water. Some families weigh this cost when deciding how much to rely on AI.
+                    There's no single "right" answer, but it can be a worthwhile part of a conversation about
+                    using technology thoughtfully and only when it genuinely helps.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 8. Responsible use -->
+        <section id="responsible" class="mb-5">
+          <p class="eyebrow mb-1">Section 8</p>
+          <h2 class="h1 mb-3">Helping Your Child Use AI Responsibly</h2>
+          <p>Encourage your child to:</p>
+          <ul>
+            <li>Verify AI-generated information.</li>
+            <li>Understand what they submit.</li>
+            <li>Respect other people's privacy.</li>
+            <li>Use AI to support — not replace — their own thinking.</li>
+            <li>Tell teachers when AI has been used, if required.</li>
+            <li>Ask questions when something feels wrong.</li>
+          </ul>
+          <div class="alert alert-light border d-flex gap-3" role="note">
+            <i class="bi bi-chat-quote fs-4 text-primary"></i>
+            <div>A useful question for parents to ask: <strong>"Could you explain this work without using
+              the AI?"</strong></div>
+          </div>
+        </section>
+
+        <!-- 9. Family agreement -->
+        <section id="agreement" class="mb-5">
+          <p class="eyebrow mb-1">Section 9</p>
+          <h2 class="h1 mb-3">A Family AI Agreement</h2>
+          <p>Consider discussing these expectations together:</p>
+          <div class="row row-cols-1 row-cols-md-2 g-2">
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>AI may be used for studying and brainstorming.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>AI shouldn't complete assignments students don't understand.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Private information should never be shared.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>AI should never be used to bully or impersonate others.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Fake images of real people should never be created or shared.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Ask permission before uploading photos of friends or family.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Be honest about when AI helped with school work.</span></div></div>
+            <div class="col"><div class="d-flex gap-2"><i class="bi bi-check2-circle text-success"></i><span>Parents and children should feel comfortable discussing AI openly.</span></div></div>
+          </div>
+        </section>
+
+        <!-- 10. Conversation starters -->
+        <section id="starters" class="mb-5">
+          <p class="eyebrow mb-1">Section 10</p>
+          <h2 class="h1 mb-3">Conversation Starters</h2>
+          <div class="card bg-light border-0">
+            <div class="card-body">
+              <ul class="mb-0">
+                <li>What AI tools are popular at school?</li>
+                <li>Have you ever seen AI make a mistake?</li>
+                <li>How would you know if an image was fake?</li>
+                <li>What should never be shared with AI?</li>
+                <li>What would you do if someone made a fake picture of a friend?</li>
+                <li>How do your teachers expect AI to be used?</li>
+                <li>What AI features do you use without even thinking about them?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 11. Traffic light -->
+        <section id="traffic-light" class="mb-5">
+          <p class="eyebrow mb-1">Section 11</p>
+          <h2 class="h1 mb-3">The AI Traffic Light</h2>
+          <p>A quick way to talk about what's okay, what needs care, and what to avoid.</p>
+          <div class="row row-cols-1 row-cols-md-3 g-3">
+            <div class="col"><div class="card tl-card tl-green h-100"><div class="card-body">
+              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-green)"></span> Green — generally appropriate</h3>
+              <ul class="small mb-0">
+                <li>Practice quizzes</li>
+                <li>Brainstorming</li>
+                <li>Study guides</li>
+                <li>Grammar assistance</li>
+                <li>Learning explanations</li>
+                <li>Asking AI to explain something you're learning</li>
+              </ul>
+            </div></div></div>
+            <div class="col"><div class="card tl-card tl-yellow h-100"><div class="card-body">
+              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-yellow)"></span> Yellow — use carefully</h3>
+              <ul class="small mb-0">
+                <li>Research summaries</li>
+                <li>Essay outlines</li>
+                <li>Public AI chatbots</li>
+                <li>Image generation</li>
+                <li>Social media content creation</li>
+              </ul>
+            </div></div></div>
+            <div class="col"><div class="card tl-card tl-red h-100"><div class="card-body">
+              <h3 class="h5 d-flex align-items-center gap-2"><span class="tl-dot" style="background:var(--tl-red)"></span> Red — avoid</h3>
+              <ul class="small mb-0">
+                <li>Submitting AI work as your own</li>
+                <li>Sharing private information</li>
+                <li>Creating fake images of real people</li>
+                <li>Bullying or impersonation</li>
+                <li>Creating sexualized content involving minors</li>
+                <li>Trusting AI without verification</li>
+              </ul>
+            </div></div></div>
+          </div>
+        </section>
+
+        <!-- 12. HELP — most prominent section -->
+        <section id="help" class="mb-5">
+          <p class="eyebrow mb-1">Section 12</p>
+          <h2 class="h1 mb-3">If Something Goes Wrong — Who to Contact</h2>
+
+          <div class="alert alert-danger d-flex gap-3" role="alert">
+            <i class="bi bi-life-preserver fs-3"></i>
+            <div>
+              <strong>Act calmly and quickly.</strong> Your child is not in trouble for being targeted,
+              and reporting is the fastest path to making it stop. Survivors of intimate-image abuse in
+              B.C. have a real, free, legal route to having images removed — they are not on their own.
+            </div>
+          </div>
+
+          <h3 class="h4 mt-4">First steps</h3>
+          <div class="row row-cols-1 row-cols-md-3 g-3 mb-4">
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h4 class="h6"><i class="bi bi-emoji-smile me-1 text-primary"></i> Stay calm</h4>
+              <p class="small mb-0">Children are far more likely to seek help if they know they'll be
+                supported, not blamed.</p>
+            </div></div></div>
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h4 class="h6"><i class="bi bi-camera me-1 text-primary"></i> Preserve evidence</h4>
+              <p class="small mb-0">Take screenshots of messages, profiles, and images if it's safe to do
+                so — this helps with removal and reporting.</p>
+            </div></div></div>
+            <div class="col"><div class="card h-100"><div class="card-body">
+              <h4 class="h6"><i class="bi bi-x-octagon me-1 text-primary"></i> Stop further sharing</h4>
+              <p class="small mb-0">Don't forward or redistribute harmful material, even to report it
+                informally.</p>
+            </div></div></div>
+          </div>
+
+          <h3 class="h4">Who to contact (B.C. &amp; Canada)</h3>
+
+          <div class="card help-card mb-3">
+            <div class="card-header"><i class="bi bi-image me-2"></i>A fake or shared intimate image of a young person</div>
+            <div class="card-body">
+              <p class="mb-2"><a href="https://takebackyourimages.gov.bc.ca" target="_blank" rel="noopener">Take Back Your Images (B.C.)</a> —
+                B.C.'s dedicated portal for getting intimate images (including AI-generated or "deepfake"
+                images) removed. It connects you to the <strong>Intimate Images Protection Service</strong>,
+                which offers free emotional support, helps you apply, and helps communicate removal orders to
+                platforms. You can apply to the <strong>Civil Resolution Tribunal</strong> for a takedown
+                order, an order to stop distribution, and compensation.</p>
+              <p class="mb-2"><a href="https://needhelpnow.ca" target="_blank" rel="noopener">NeedHelpNow.ca</a> —
+                step-by-step help for youth to remove sexual images or videos shared online.</p>
+              <p class="mb-0"><a href="https://www.cybertip.ca" target="_blank" rel="noopener">Cybertip.ca</a> —
+                Canada's national tipline for reporting the online sexual exploitation of children. Report
+                here if your child is under 18.</p>
+            </div>
+          </div>
+
+          <div class="card help-card mb-3">
+            <div class="card-header"><i class="bi bi-mortarboard me-2"></i>Something that happened at or involves school</div>
+            <div class="card-body">
+              <p class="mb-2"><a href="https://erasereportit.gov.bc.ca/" target="_blank" rel="noopener">erase — Report It</a> —
+                B.C.'s confidential reporting tool that sends a private message to your school or district's
+                safe-school coordinator, who follows up promptly. You can report anonymously or include your
+                name.</p>
+              <p class="mb-0">Contact your school administration directly if classmates are involved.</p>
+            </div>
+          </div>
+
+          <div class="card help-card mb-3">
+            <div class="card-header"><i class="bi bi-telephone me-2"></i>Emotional support — any time, day or night</div>
+            <div class="card-body">
+              <p class="mb-0"><strong>Kids Help Phone</strong> — call
+                <a href="tel:18006686868">1-800-668-6868</a>, or text <strong>CONNECT</strong> to
+                <strong>686868</strong>. Free, confidential support for young people across Canada.</p>
+            </div>
+          </div>
+
+          <div class="card help-card">
+            <div class="card-header"><i class="bi bi-shield-exclamation me-2"></i>Threats, extortion, or child exploitation</div>
+            <div class="card-body">
+              <p class="mb-0">Contact your local police — call <a href="tel:911">911</a> in an emergency, or
+                the non-emergency line otherwise — in addition to
+                <a href="https://www.cybertip.ca" target="_blank" rel="noopener">Cybertip.ca</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 13. Final thoughts -->
+        <section id="final" class="mb-5">
+          <p class="eyebrow mb-1">Section 13</p>
+          <h2 class="h1 mb-3">Final Thoughts</h2>
+          <p>AI is becoming part of modern childhood. Like the internet, smartphones, and social media
+            before it, AI presents both opportunities and challenges. Parents don't need to become
+            technical experts. The most important things you can do are:</p>
+          <div class="row row-cols-2 row-cols-md-3 g-2 mb-3">
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-search me-1"></i>Stay curious</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-people me-1"></i>Learn alongside them</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-lightbulb me-1"></i>Encourage critical thinking</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-lock me-1"></i>Protect privacy</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-chat-dots me-1"></i>Talk openly</span></div>
+            <div class="col"><span class="badge text-bg-light border w-100 py-2"><i class="bi bi-life-preserver me-1"></i>Ask for help</span></div>
+          </div>
+          <p class="fw-semibold mb-0">The goal is not to raise children who avoid AI. The goal is to raise
+            children who can use AI thoughtfully, ethically, and safely.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="mb-5">
+          <p class="eyebrow mb-1">Appendix A</p>
+          <h2 class="h1 mb-3">Frequently Asked Questions</h2>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Is AI cheating?</button></h3>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                Not necessarily. Using AI to brainstorm or study may be acceptable; submitting AI-generated
+                work as original work may violate school expectations. When in doubt, your child should ask
+                their teacher what's allowed for a specific assignment.
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Should I let my child use ChatGPT or other AI tools?</button></h3>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                This depends on age, maturity, and family expectations. Many parents choose supervised use
+                combined with discussions about privacy and critical thinking. Note that many public AI tools
+                set their own minimum age in their terms of use — it's worth checking.
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Can AI create fake pictures of my child?</button></h3>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                Yes. Modern AI systems can generate convincing fake images based on photographs or simple
+                text prompts.
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">What should I do if someone creates a fake image of my child?</button></h3>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                <ul class="mb-2">
+                  <li>Stay calm and reassure your child it's not their fault.</li>
+                  <li>Save evidence (screenshots) if it's safe to do so.</li>
+                  <li>Do not redistribute the image.</li>
+                  <li>Use <a href="https://takebackyourimages.gov.bc.ca" target="_blank" rel="noopener">takebackyourimages.gov.bc.ca</a> to begin removal and get support, and report to <a href="https://www.cybertip.ca" target="_blank" rel="noopener">Cybertip.ca</a> (your child is a minor).</li>
+                  <li>Use erase — Report It or contact school administration if classmates are involved.</li>
+                  <li>Call Kids Help Phone (<a href="tel:18006686868">1-800-668-6868</a>) for emotional support.</li>
+                  <li>Contact police (911 in an emergency) if there are threats or exploitation.</li>
+                </ul>
+                <p class="mb-0">See <a href="#help">If something goes wrong</a> for full contact details.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Can my family opt out of school-provided AI?</button></h3>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                Policies vary and are still developing. If you'd prefer your child not use a school-provided
+                AI tool, contact your child's school or district directly to ask what options are available.
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Can AI replace teachers?</button></h3>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                No. AI can support learning, but teachers provide judgment, mentorship, emotional support,
+                social development, and human connection.
+              </div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick checklist -->
+        <section id="checklist" class="mb-5">
+          <p class="eyebrow mb-1">Appendix D</p>
+          <h2 class="h1 mb-3">Quick Reference Checklist</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card h-100 border-success"><div class="card-body">
+                <h3 class="h5 text-success"><i class="bi bi-check2-all me-2"></i>Good everyday uses</h3>
+                <ul class="mb-0">
+                  <li>Brainstorming</li><li>Practice quizzes</li><li>Study help</li>
+                  <li>Translation</li><li>Learning explanations</li>
+                </ul>
+              </div></div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 border-warning"><div class="card-body">
+                <h3 class="h5" style="color:var(--tl-yellow)"><i class="bi bi-exclamation-triangle me-2"></i>Warning signs</h3>
+                <ul class="mb-0">
+                  <li>Secretive AI use</li><li>Sharing personal information</li>
+                  <li>AI replacing friendships</li><li>Deepfake bullying</li>
+                  <li>Requests for intimate images</li><li>Sudden online threats</li>
+                </ul>
+              </div></div>
+            </div>
+            <div class="col-12">
+              <div class="card border-danger"><div class="card-body">
+                <h3 class="h5 text-danger"><i class="bi bi-life-preserver me-2"></i>If something goes wrong</h3>
+                <ol class="mb-0">
+                  <li><strong>Stay calm and supportive.</strong></li>
+                  <li><strong>Save evidence</strong> (screenshots) and stop further sharing.</li>
+                  <li><strong>If school-related:</strong> contact administration and use erase — Report It.</li>
+                  <li><strong>If intimate images are involved:</strong> use Take Back Your Images (B.C.) and Cybertip.ca.</li>
+                  <li><strong>If threats/extortion occur:</strong> contact local police (911 for emergencies).</li>
+                  <li><strong>Emotional support:</strong> Kids Help Phone — <a href="tel:18006686868">1-800-668-6868</a>.</li>
+                </ol>
+              </div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Resources -->
+        <section id="resources" class="mb-5">
+          <p class="eyebrow mb-1">Appendix B &amp; C</p>
+          <h2 class="h1 mb-3">Canadian Resources &amp; References</h2>
+          <p class="text-secondary small">Links point to official pages that are kept current. If a page has
+            moved, start from the organization's main website.</p>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h3 class="h6 text-uppercase text-secondary">Education &amp; AI policy</h3>
+              <ul class="list-unstyled small">
+                <li class="mb-2"><a href="https://www2.gov.bc.ca/gov/content/education-training/k-12/administration/program-management/ai-in-education" target="_blank" rel="noopener">B.C. Ministry of Education — Digital Literacy &amp; AI in Education</a></li>
+                <li class="mb-2"><a href="https://www2.gov.bc.ca/assets/gov/education/administration/kindergarten-to-grade-12/ai-in-education/considerations-for-using-ai-tools-in-k-12-schools.pdf" target="_blank" rel="noopener">Considerations for Using AI Tools in K-12 Schools (PDF)</a></li>
+                <li class="mb-2"><a href="https://www.vsb.bc.ca/digital-literacy-and-use-of-ai-in-education" target="_blank" rel="noopener">VSB — Digital Literacy &amp; Use of AI in Education</a></li>
+                <li class="mb-2"><a href="https://www.vsb.bc.ca/copilot-13-in-secondary-schools" target="_blank" rel="noopener">VSB — Copilot 13+ in Secondary Schools</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3 class="h6 text-uppercase text-secondary">Intimate images &amp; online harm (B.C.)</h3>
+              <ul class="list-unstyled small">
+                <li class="mb-2"><a href="https://takebackyourimages.gov.bc.ca" target="_blank" rel="noopener">Take Back Your Images / Intimate Images Protection Service</a></li>
+                <li class="mb-2"><a href="https://www2.gov.bc.ca/gov/content/safety/public-safety/intimate-images/image-removal-reporting" target="_blank" rel="noopener">B.C. Government — Report &amp; Remove Your Images (hub)</a></li>
+                <li class="mb-2"><a href="https://civilresolutionbc.ca/solution-explorer/intimate-images/" target="_blank" rel="noopener">Civil Resolution Tribunal — Intimate Images</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3 class="h6 text-uppercase text-secondary">Online safety (Canada)</h3>
+              <ul class="list-unstyled small">
+                <li class="mb-2"><a href="https://www.protectchildren.ca" target="_blank" rel="noopener">Canadian Centre for Child Protection</a></li>
+                <li class="mb-2"><a href="https://www.cybertip.ca" target="_blank" rel="noopener">Cybertip.ca</a> — national tipline</li>
+                <li class="mb-2"><a href="https://needhelpnow.ca" target="_blank" rel="noopener">NeedHelpNow.ca</a></li>
+                <li class="mb-2"><a href="https://kidshelpphone.ca" target="_blank" rel="noopener">Kids Help Phone</a> — 1-800-668-6868, text CONNECT to 686868</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3 class="h6 text-uppercase text-secondary">Digital literacy &amp; privacy</h3>
+              <ul class="list-unstyled small">
+                <li class="mb-2"><a href="https://mediasmarts.ca" target="_blank" rel="noopener">MediaSmarts</a> — parent resources on AI &amp; algorithms</li>
+                <li class="mb-2"><a href="https://www.priv.gc.ca" target="_blank" rel="noopener">Office of the Privacy Commissioner of Canada — Privacy &amp; AI</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Glossary -->
+        <section id="glossary" class="mb-5">
+          <p class="eyebrow mb-1">Appendix E</p>
+          <h2 class="h1 mb-3">AI &amp; Digital Literacy Glossary</h2>
+          <p>Plain-language definitions of words used throughout this guide. Start typing to filter.</p>
+          <div class="input-group mb-3" id="glossary-search">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" id="glossaryFilter" placeholder="Search terms…" aria-label="Search glossary terms">
+          </div>
+          <dl id="glossaryList" class="row">
+            <!-- terms injected as .glossary-term blocks -->
+          </dl>
+          <p id="glossaryEmpty" class="text-secondary d-none">No terms match that search.</p>
+        </section>
+
+        <!-- Disclaimer -->
+        <section id="disclaimer" class="mb-2">
+          <div class="alert alert-secondary small mb-0">
+            <strong>Disclaimer.</strong> This guide is for educational and informational purposes only. It
+            is not legal advice, medical advice, or psychological counselling. Consult appropriate
+            professionals or authorities for specific situations involving child safety, online
+            exploitation, privacy breaches, or legal concerns. Service details and laws referenced here were
+            accurate as of June 2026 and may change — confirm current information through the official links
+            above.
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer-note py-4 mt-5">
+    <div class="container small">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>A Parent's Guide to Artificial Intelligence · Version 1.2 · Reviewed June 2026</span>
+        <span class="d-flex flex-wrap align-items-center gap-3">
+          <a href="parents-guide-to-ai.pdf" download class="pdf-link"><i class="bi bi-file-earmark-arrow-down me-1"></i>Download PDF</a>
+          <span>Questions or broken links? <a href="mailto:yvanboily@gmail.com">yvanboily@gmail.com</a></span>
+        </span>
+      </div>
+      <hr class="my-3 border-secondary">
+      <div class="d-flex align-items-start gap-2">
+        <i class="bi bi-cc-circle-fill fs-5 mt-1" aria-hidden="true"></i>
+        <p class="mb-0">
+          <span property="dct:title">A Parent's Guide to Artificial Intelligence</span> by
+          <span property="cc:attributionName">Yvan Boily</span> is licensed under
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.
+          You are free to share and adapt this material for non-commercial purposes, as long as you give
+          appropriate credit and distribute any adaptations under the same license.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#top" id="backToTop" class="btn btn-primary rounded-circle position-fixed shadow"
+     style="bottom: 1.25rem; right: 1.25rem; width: 3rem; height: 3rem; display:none;"
+     aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- ===================== OFFCANVAS TOC (mobile) ===================== -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="tocOffcanvasLabel">Contents</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="nav flex-column">
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#intro">Introduction</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#copilot">Understanding Copilot 13+</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#what-is-ai">What is AI?</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#why-schools">Why schools introduce AI</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#school-vs-home">School AI vs. home AI</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#opportunities">Opportunities</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#risks">Risks &amp; challenges</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#responsible">Using AI responsibly</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#agreement">A family AI agreement</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#starters">Conversation starters</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#traffic-light">The AI traffic light</a>
+        <a class="nav-link text-danger fw-semibold" data-bs-dismiss="offcanvas" href="#help">If something goes wrong</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#final">Final thoughts</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#faq">FAQ</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#checklist">Quick checklist</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#resources">Resources</a>
+        <a class="nav-link" data-bs-dismiss="offcanvas" href="#glossary">Glossary</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ---- Dark mode toggle ----
+    // Starts from the OS preference, then lets the user override for the session.
+    (function () {
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-bs-theme', prefersDark ? 'dark' : 'light');
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const next = root.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-bs-theme', next);
+        });
+      });
+    })();
+
+    // ---- Glossary data (term: definition) ----
+    const glossary = {
+      "Academic Integrity": "Being honest about your own work and following the rules for assignments, tests, and projects.",
+      "Acceptable Use Policy": "A set of rules that explains how school computers, networks, and technology tools should be used.",
+      "Algorithm": "A set of instructions that tells a computer how to solve a problem or make a decision.",
+      "Artificial Intelligence (AI)": "Computer technology that can perform tasks that usually require human thinking, such as answering questions, creating images, or writing text.",
+      "AI Assistant": "A computer program that uses AI to help answer questions, complete tasks, or provide suggestions.",
+      "AI Companion": "An AI chatbot designed to simulate friendship or conversation over long periods of time.",
+      "AI Model": "The underlying computer system that has been trained to recognize patterns and generate responses.",
+      "AI-Generated Intimate Image": "A fake or altered private sexual image created using artificial intelligence.",
+      "Bias": "An unfair preference or tendency that can cause AI to favour certain viewpoints or groups over others.",
+      "Chatbot": "A computer program that carries on a conversation with a user through text or voice.",
+      "Citation": "Information that identifies where facts, ideas, or quotations came from.",
+      "Commercial Data Protection": "A feature that helps prevent information entered into certain AI systems from being used to train public AI models.",
+      "Content Filtering": "Technology that blocks or reduces access to harmful, inappropriate, or unsafe material.",
+      "Copyright": "Legal protection that gives creators control over how their original work is copied or used.",
+      "Critical Thinking": "Carefully examining information, asking questions, and deciding whether something is accurate or trustworthy.",
+      "Cyberbullying": "Using technology to repeatedly hurt, embarrass, threaten, or harass another person.",
+      "Data Collection": "The process of gathering information from users or devices.",
+      "Data Retention": "How long an organization keeps information after it has been collected.",
+      "Deep Learning": "A type of artificial intelligence that learns by analyzing very large amounts of information.",
+      "Deepfake": "A fake image, video, or audio recording created or altered using artificial intelligence to look or sound real.",
+      "Digital Citizenship": "Using technology safely, responsibly, respectfully, and ethically.",
+      "Digital Literacy": "The skills needed to use technology effectively, think critically about online information, and stay safe online.",
+      "Digital Wellbeing": "Maintaining a healthy and balanced relationship with technology.",
+      "Disinformation": "False information that is deliberately created or shared to mislead people.",
+      "Emotional Dependency": "Feeling like you need a person, service, or technology in order to feel safe, happy, or emotionally supported.",
+      "Encryption": "A method of protecting information by converting it into a form that only authorized people or systems can read.",
+      "Executive Functioning": "The mental skills that help people plan, organize, manage time, remember instructions, and control impulses.",
+      "Fake News": "False or misleading information that is presented as though it were real news.",
+      "Generative AI": "A type of artificial intelligence that creates new content such as text, images, music, video, or computer code.",
+      "Hallucination (AI)": "When an AI system confidently generates information that is incorrect, made up, or unsupported by evidence.",
+      "Harassment": "Repeated behaviour intended to upset, threaten, intimidate, or harm another person.",
+      "Identity Theft": "The use of someone else's personal information without permission, usually for fraud or deception.",
+      "Image-Based Abuse": "The creation, sharing, or threat of sharing private or intimate images without a person's consent.",
+      "Impersonation": "Pretending to be another person online or through technology.",
+      "Intellectual Property": "Creative work, ideas, or inventions that legally belong to the person or organization that created them.",
+      "Intimate Image": "A private sexual image or video of a person.",
+      "Intimate Images Protection Act": "A British Columbia law that helps people stop the sharing of intimate images without their permission and provides legal remedies for victims.",
+      "Large Language Model (LLM)": "A type of AI system trained on very large amounts of text so that it can understand and generate human language.",
+      "Machine Learning": "A method of building AI systems by allowing computers to learn patterns from large amounts of information instead of programming every rule directly.",
+      "Manipulated Media": "Images, videos, or audio recordings that have been edited or altered to change their meaning or appearance.",
+      "Metadata": "Information about other information, such as when a photograph was taken or who created a file.",
+      "Microsoft Copilot": "Microsoft's AI assistant, including the version provided by some schools for educational use.",
+      "Misinformation": "False or inaccurate information that is shared without the intention to deceive.",
+      "Natural Language Processing (NLP)": "A branch of AI that helps computers understand and work with human language.",
+      "Non-Consensual Intimate Image": "A private sexual image that is created, shared, or distributed without the permission of the person shown.",
+      "Online Boundaries": "Personal rules about what information, images, or conversations should or should not be shared online.",
+      "Online Grooming": "When someone builds trust with a young person online in order to exploit, manipulate, or abuse them.",
+      "Organizational Account": "An account that is created and managed by a school, workplace, or other organization.",
+      "Personal Information": "Information that can identify a person, such as their name, address, phone number, school, or date of birth.",
+      "Phishing": "An attempt to trick someone into giving away passwords, financial information, or other personal details.",
+      "Plagiarism": "Presenting someone else's work or ideas as your own without giving proper credit.",
+      "Privacy": "A person's right to control who has access to their personal information.",
+      "Prompt": "The question, instruction, or request that a user gives to an AI system.",
+      "Prompt Engineering": "The practice of carefully designing prompts to get better or more accurate results from an AI system.",
+      "Public AI Tool": "An AI service that is available to the general public, usually through a website or mobile app.",
+      "School-Managed Account": "A user account that is created and controlled by a school or school district.",
+      "School-Supported AI": "An AI tool that has been approved or provided by a school or school district for educational purposes.",
+      "Scam": "A dishonest attempt to trick someone into giving away money, information, or property.",
+      "Screen Time": "The amount of time a person spends using devices such as phones, tablets, computers, or televisions.",
+      "Sextortion": "A form of blackmail where someone threatens to share private or sexual images unless they receive money, more images, or other demands are met.",
+      "Stop Distribution Order": "A legal order requiring someone to stop sharing or distributing harmful material, including intimate images.",
+      "Takedown Order": "A legal order requiring that harmful online content be removed.",
+      "Training Data": "The large collection of information that an AI system learns from during development."
+    };
+
+    // Render glossary into two-column definition list
+    const list = document.getElementById('glossaryList');
+    const frag = document.createDocumentFragment();
+    Object.keys(glossary).forEach(term => {
+      const wrap = document.createElement('div');
+      wrap.className = 'col-md-6 glossary-term mb-3';
+      wrap.dataset.term = term.toLowerCase();
+      const dt = document.createElement('dt');
+      dt.textContent = term;
+      const dd = document.createElement('dd');
+      dd.className = 'mb-0';
+      dd.textContent = glossary[term];
+      wrap.append(dt, dd);
+      frag.appendChild(wrap);
+    });
+    list.appendChild(frag);
+
+    // Filter
+    const filter = document.getElementById('glossaryFilter');
+    const empty = document.getElementById('glossaryEmpty');
+    filter.addEventListener('input', () => {
+      const q = filter.value.trim().toLowerCase();
+      let shown = 0;
+      document.querySelectorAll('.glossary-term').forEach(el => {
+        const match = el.dataset.term.includes(q) || el.textContent.toLowerCase().includes(q);
+        el.classList.toggle('d-none', !match);
+        if (match) shown++;
+      });
+      empty.classList.toggle('d-none', shown !== 0);
+    });
+
+    // Back-to-top visibility
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 600 ? 'flex' : 'none';
+    });
+    topBtn.style.alignItems = 'center';
+    topBtn.style.justifyContent = 'center';
+  </script>
+</body>
+</html>
