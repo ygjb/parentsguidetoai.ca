@@ -103,6 +103,27 @@
         radial-gradient(120% 140% at 0% 0%, var(--brand-soft-2) 0%, rgba(233,239,232,0) 55%);
     }
 
+    /* Site logo banner */
+    .site-logo-banner {
+      display: inline-block;
+      padding: 1.5rem 2.5rem;
+      background: #ffffff;
+      border: 2px solid var(--bs-primary);
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 18px rgba(47, 93, 98, .18);
+      transition: box-shadow .2s;
+      text-decoration: none;
+    }
+    .site-logo-banner:hover { box-shadow: 0 6px 24px rgba(47, 93, 98, .28); }
+    .site-logo-banner img { display: block; max-width: 380px; width: 100%; height: auto; }
+    [data-bs-theme="dark"] .site-logo-banner {
+      border-color: var(--bs-primary);
+      box-shadow: 0 4px 20px rgba(111, 179, 186, .22);
+    }
+    [data-bs-theme="dark"] .site-logo-banner:hover {
+      box-shadow: 0 6px 28px rgba(111, 179, 186, .35);
+    }
+
     /* Sticky sidebar navigation (scrollspy) */
     .toc-nav .nav-link {
       color: #5a6566;
@@ -229,7 +250,11 @@
     <div class="container py-lg-4">
       <div class="row align-items-center g-4">
         <div class="col-lg-7">
-          <img src="logo.png" alt="A Parent's Guide to AI" class="img-fluid mb-4" style="max-width:380px">
+          <div class="text-center mb-4">
+            <a href="#top" class="site-logo-banner">
+              <img src="logo.png" alt="A Parent's Guide to AI">
+            </a>
+          </div>
           <p class="eyebrow mb-2">B.C. Schools &amp; at Home · Version 1.2</p>
           <h1 class="display-4 mb-3">A Parent's Guide to Artificial Intelligence</h1>
           <p class="lead text-secondary mb-4">
