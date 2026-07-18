@@ -6,17 +6,37 @@
   <title>A Parent's Guide to AI — B.C. Schools and at Home</title>
   <meta name="description" content="A plain-language guide to help parents and caregivers understand AI in B.C. schools, set sensible rules at home, and know exactly who to contact if something goes wrong.">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <!-- Set initial theme from URL hash before paint — no storage used -->
+  <!-- Set initial theme before paint — light by default, but honour the OS setting.
+       No storage used: an explicit choice travels in the URL hash (#dark / #light);
+       with no hash we follow prefers-color-scheme. -->
   <script>
     (function () {
-      if (window.location.hash === '#dark') {
-        document.documentElement.setAttribute('data-bs-theme', 'dark');
-      }
-      // else stays 'light' as set on <html data-bs-theme="light">
+      var h = window.location.hash;
+      var dark = (h === '#dark') ||
+                 (h !== '#light' && window.matchMedia &&
+                  window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
     })();
   </script>
+
+  <!-- Figtree, self-hosted (OFL) — no third-party request; matches the blog -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/figtree-latin.woff2">
+  <style>
+    @font-face{font-family:"Figtree";font-style:normal;font-weight:300 800;font-display:swap;
+      src:url("fonts/figtree-latin.woff2") format("woff2");
+      unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+    @font-face{font-family:"Figtree";font-style:normal;font-weight:300 800;font-display:swap;
+      src:url("fonts/figtree-latin-ext.woff2") format("woff2");
+      unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+    @font-face{font-family:"Figtree";font-style:italic;font-weight:300 800;font-display:swap;
+      src:url("fonts/figtree-italic-latin.woff2") format("woff2");
+      unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+    @font-face{font-family:"Figtree";font-style:italic;font-weight:300 800;font-display:swap;
+      src:url("fonts/figtree-italic-latin-ext.woff2") format("woff2");
+      unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+  </style>
 
 
   <!-- Bootstrap 5 — subresource integrity (SRI) verified -->
@@ -27,7 +47,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"
         integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-  <!-- Fonts: Figtree loads from the system stack if available; Google Fonts removed for privacy -->
+  <!-- Fonts: Figtree is self-hosted below (@font-face) — no third-party request; matches the blog -->
 
   <!--
     ===========================================================================
@@ -58,6 +78,7 @@
       --tl-red: #c0392b;
 
       --bs-body-color: var(--brand-ink);
+      --bs-body-bg: #f3f1ea; /* shared paper ground — matches the blog */
       --bs-body-font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       --bs-link-color: var(--bs-primary);
       --bs-link-hover-color: var(--brand-accent);
@@ -79,6 +100,7 @@
       --tl-red: #e8776b;
 
       --bs-body-color: var(--brand-ink);
+      --bs-body-bg: #1a2526; /* shared paper ground (dark) — matches the blog */
       --bs-link-color: var(--bs-primary);
       --bs-link-hover-color: var(--brand-accent);
     }
@@ -86,6 +108,13 @@
     body { scroll-behavior: smooth; }
 
     h1, h2, h3, h4, .display-4 { font-weight: 700; letter-spacing: -0.01em; }
+
+    /* Reading measure — keep running prose to a comfortable line length,
+       while cards, tables and grids inside sections stay full width. */
+    #mainContent section > p,
+    #mainContent section > ul,
+    #mainContent section > ol,
+    #mainContent section > .lead { max-width: 68ch; }
 
     /* Section anchors clear the sticky navbar */
     section[id] { scroll-margin-top: 90px; }
@@ -1196,41 +1225,50 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-    // ---- Dark mode toggle ----
-    // Theme is driven by #dark in the URL hash — no cookies or localStorage used.
-    // Links to blog.parentsguidetoai.ca get #dark appended when dark mode is active
-    // so the preference carries across to the blog.
+    // ---- Theme toggle ----
+    // Light by default, but honours the OS setting. No cookies or localStorage:
+    // an explicit choice travels in the URL hash (#dark / #light) so it carries
+    // across to the blog; with no hash we follow prefers-color-scheme.
     (function () {
       var root = document.documentElement;
+      var mq   = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+      var chosen = (window.location.hash === '#dark') || (window.location.hash === '#light');
 
       function applyTheme(dark) {
         root.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
       }
 
+      // Carry the currently-shown theme to the blog (and internal links) as an
+      // explicit hash, so what the reader sees stays consistent across pages.
       function propagateLinks() {
-        var dark = root.getAttribute('data-bs-theme') === 'dark';
+        var tag = root.getAttribute('data-bs-theme') === 'dark' ? '#dark' : '#light';
         document.querySelectorAll('a[href]').forEach(function (a) {
           var href = a.getAttribute('href');
-          // Cover both domains so dark mode survives navigation on either site
           if (/^https?:\/\/(blog\.)?parentsguidetoai\.ca/i.test(href)) {
-            var base = href.split('#')[0];
-            a.setAttribute('href', dark ? base + '#dark' : base);
+            a.setAttribute('href', href.split('#')[0] + tag);
           }
         });
       }
 
-      // Apply theme from hash (HTML element already defaults to 'light')
-      applyTheme(window.location.hash === '#dark');
+      // Sync with whatever the anti-flash script already applied
+      applyTheme(root.getAttribute('data-bs-theme') === 'dark');
       propagateLinks();
 
       var btn = document.getElementById('themeToggle');
       if (btn) {
         btn.addEventListener('click', function () {
           var goingDark = root.getAttribute('data-bs-theme') !== 'dark';
+          chosen = true;
           applyTheme(goingDark);
-          history.replaceState(null, '', window.location.pathname + window.location.search + (goingDark ? '#dark' : ''));
+          history.replaceState(null, '', window.location.pathname + window.location.search + (goingDark ? '#dark' : '#light'));
           propagateLinks();
         });
+      }
+
+      // Follow the OS if it changes and the reader hasn't chosen explicitly
+      if (mq) {
+        var onChange = function (e) { if (!chosen) { applyTheme(e.matches); propagateLinks(); } };
+        mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
       }
     })();
 
